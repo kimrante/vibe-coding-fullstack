@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Vibe Coding | Post List</title>
+    <title>Vibe Coding | Post Detail</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
@@ -54,53 +54,56 @@
     </header>
 
     <main class="py-20 px-6">
-        <div class="max-w-[1200px] mx-auto">
+        <div class="max-w-[1000px] mx-auto">
             <div class="mb-12 border-b border-gray-200 pb-8">
-                <h1 class="text-4xl font-bold tracking-tight mb-4 text-[var(--samsung-black)]">커뮤니티 게시판</h1>
-                <p class="text-[var(--samsung-text-muted)]">최신 기술 트렌드와 Vibe를 공유하세요.</p>
-            </div>
-
-            <div class="overflow-x-auto border-t-2 border-[var(--samsung-black)]">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="border-b border-gray-200 bg-gray-50">
-                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest w-24">No.</th>
-                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest">Title</th>
-                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest w-40">Date</th>
-                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest w-32">Views</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="post : ${posts}"
-                            class="border-b border-gray-100 hover:bg-gray-50 transition-all group cursor-pointer">
-                            <td class="py-5 px-6 text-sm text-[var(--samsung-text-muted)]" th:text="${post.no}">1</td>
-                            <td class="py-5 px-6 text-sm font-semibold">
-                                <a th:href="@{/posts/{no}(no=${post.no})}"
-                                    class="group-hover:text-[var(--samsung-red)] transition-colors"
-                                    th:text="${post.title}">게시글 제목입니다.</a>
-                            </td>
-                            <td class="py-5 px-6 text-sm text-[var(--samsung-text-muted)]"
-                                th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}">2024-01-01</td>
-                            <td class="py-5 px-6 text-sm text-[var(--samsung-text-muted)]"
-                                th:text="${#numbers.formatInteger(post.views, 0, 'COMMA')}">0</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-12 flex justify-between items-center">
-                <div class="flex gap-2">
-                    <button
-                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">PREV</button>
-                    <button
-                        class="px-5 py-2 bg-[var(--samsung-black)] text-white text-xs font-bold sharp-edge">1</button>
-                    <button
-                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">NEXT</button>
+                <div
+                    class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-[var(--samsung-red)] mb-4">
+                    <span>Community</span>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-[var(--samsung-black)]" th:text="'Post #' + ${post.no}">Post #1</span>
                 </div>
-                <button
-                    class="bg-[var(--samsung-red)] text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#a50d26] transition-all shadow-lg hover:shadow-red-900/10">
-                    Write Post
-                </button>
+                <h1 class="text-4xl font-bold tracking-tight mb-6 text-[var(--samsung-black)]" th:text="${post.title}">
+                    게시글 제목</h1>
+
+                <div class="flex flex-wrap gap-8 text-sm text-[var(--samsung-text-muted)]">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">calendar_today</span>
+                        <span
+                            th:text="'Created: ' + ${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">2024-01-01</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">edit_note</span>
+                        <span
+                            th:text="'Updated: ' + ${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}">2024-01-01</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">visibility</span>
+                        <span th:text="'Views: ' + ${post.views}">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[var(--samsung-grey)] p-10 min-h-[400px] sharp-edge mb-12">
+                <div class="prose max-w-none text-lg leading-relaxed text-[var(--samsung-text-dark)]"
+                    th:text="${post.content}">
+                    게시글 내용이 여기에 표시됩니다.
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center border-t border-gray-200 pt-10">
+                <a th:href="@{/posts}"
+                    class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--samsung-black)] hover:text-[var(--samsung-red)] transition-colors group">
+                    <span
+                        class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to List
+                </a>
+
+                <div class="flex gap-4">
+                    <button
+                        class="px-8 py-3.5 border border-gray-200 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-gray-50 transition-colors">Edit</button>
+                    <button
+                        class="bg-[var(--samsung-black)] text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#333333] transition-colors">Delete</button>
+                </div>
             </div>
         </div>
     </main>

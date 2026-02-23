@@ -17,4 +17,14 @@ public class PostService {
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
+
+    public Post getPostByNo(Long no) {
+        Post post = postRepository.findByNo(no)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid post number: " + no));
+        
+        // 조회수 증가
+        post.setViews(post.getViews() + 1);
+        
+        return post;
+    }
 }
