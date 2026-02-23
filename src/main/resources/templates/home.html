@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -51,13 +51,13 @@
     <header class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-12">
-                <a class="text-[22px] font-bold tracking-tight text-[var(--samsung-text-dark)]" href="#">
+                <a class="text-[22px] font-bold tracking-tight text-[var(--samsung-text-dark)]" th:href="@{/}">
                     바이브코딩 <span class="text-[var(--samsung-red)]">Vibe Coding</span>
                 </a>
                 <nav class="hidden lg:flex items-center gap-8">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" th:href="@{/}">Home</a>
                     <a class="nav-link" href="#">Curriculum</a>
-                    <a class="nav-link" href="#">Community</a>
+                    <a class="nav-link" th:href="@{/posts}">Community</a>
                     <a class="nav-link" href="#">Support</a>
                 </nav>
             </div>
@@ -82,7 +82,8 @@
                     Master the art of software craft with premium curriculum and a global network of innovators.
                 </p>
                 <div class="flex gap-4">
-                    <button class="samsung-btn samsung-btn-red !px-12 !py-4 text-base">Learn More</button>
+                    <a th:href="@{/posts}" class="samsung-btn samsung-btn-red !px-12 !py-4 text-base inline-block">Learn
+                        More</a>
                     <button class="samsung-btn !bg-white !text-black hover:!bg-gray-100 !px-12 !py-4 text-base">Buy
                         Now</button>
                 </div>
@@ -183,7 +184,9 @@
                 <p class="text-xl text-[var(--samsung-text-muted)] mb-12">Join thousands of developers in the Vibe
                     Coding movement today and build the future you want to see.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="samsung-btn samsung-btn-red !px-16 !py-4 text-lg sharp-edge">Get Started Now</button>
+                    <a th:href="@{/posts}"
+                        class="samsung-btn samsung-btn-red !px-16 !py-4 text-lg sharp-edge inline-block">Get Started
+                        Now</a>
                     <button class="samsung-btn samsung-btn-primary !px-16 !py-4 text-lg sharp-edge">Talk to
                         Alumni</button>
                 </div>
