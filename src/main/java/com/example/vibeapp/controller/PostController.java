@@ -24,6 +24,13 @@ public class PostController {
         return "post_new_form";
     }
 
+    @org.springframework.web.bind.annotation.PostMapping("/posts/add")
+    public String add(@org.springframework.web.bind.annotation.RequestParam String title,
+                      @org.springframework.web.bind.annotation.RequestParam String content) {
+        postService.addPost(title, content);
+        return "redirect:/posts";
+    }
+
     @GetMapping("/posts/{no}")
     public String detail(@org.springframework.web.bind.annotation.PathVariable Long no, Model model) {
         model.addAttribute("post", postService.getPostByNo(no));

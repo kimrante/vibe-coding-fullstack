@@ -37,4 +37,8 @@ public class PostRepository {
                 .filter(post -> post.getNo().equals(no))
                 .findFirst();
     }
+
+    public void save(Post post) {
+        posts.add(post);
+    }
 }
