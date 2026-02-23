@@ -27,7 +27,9 @@ public class PostRepository {
     }
 
     public List<Post> findAll() {
-        return new ArrayList<>(posts);
+        return posts.stream()
+                .sorted((p1, p2) -> p2.getNo().compareTo(p1.getNo()))
+                .toList();
     }
 
     public Optional<Post> findByNo(Long no) {
