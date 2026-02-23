@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | Post List</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --samsung-red: #c8102e;
+            --samsung-black: #000000;
+            --samsung-grey: #f4f4f4;
+            --samsung-text-dark: #000000;
+            --samsung-text-muted: #555555;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .nav-link {
+            @apply text-[14px] font-medium text-[var(--samsung-text-dark)] hover:opacity-70 transition-opacity;
+        }
+        .sharp-edge {
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[var(--samsung-text-dark)]">
+    <header class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <a class="text-[22px] font-bold tracking-tight text-[var(--samsung-text-dark)]" th:href="@{/}">
+                    바이브코딩 <span class="text-[var(--samsung-red)]">Vibe Coding</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                    <a class="nav-link font-bold text-[var(--samsung-red)]" th:href="@{/posts}">Community</a>
+                    <a class="nav-link" href="#">Curriculum</a>
+                    <a class="nav-link" href="#">Support</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="material-symbols-outlined text-[20px] font-light">search</button>
+                <button class="material-symbols-outlined text-[20px] font-light">shopping_cart</button>
+                <button class="material-symbols-outlined text-[20px] font-light">person</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-20 px-6">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="mb-12 border-b border-gray-200 pb-8">
+                <h1 class="text-4xl font-bold tracking-tight mb-4 text-[var(--samsung-black)]">커뮤니티 게시판</h1>
+                <p class="text-[var(--samsung-text-muted)]">최신 기술 트렌드와 Vibe를 공유하세요.</p>
+            </div>
+
+            <div class="overflow-x-auto border-t-2 border-[var(--samsung-black)]">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-gray-200 bg-gray-50">
+                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest w-24">No.</th>
+                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest">Title</th>
+                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest w-40">Date</th>
+                            <th class="py-4 px-6 font-bold text-xs uppercase tracking-widest w-32">Views</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="post : ${posts}"
+                            class="border-b border-gray-100 hover:bg-gray-50 transition-all group cursor-pointer">
+                            <td class="py-5 px-6 text-sm text-[var(--samsung-text-muted)]" th:text="${post.no}">1</td>
+                            <td class="py-5 px-6 text-sm font-semibold">
+                                <span class="group-hover:text-[var(--samsung-red)] transition-colors"
+                                    th:text="${post.title}">게시글 제목입니다.</span>
+                            </td>
+                            <td class="py-5 px-6 text-sm text-[var(--samsung-text-muted)]"
+                                th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}">2024-01-01</td>
+                            <td class="py-5 px-6 text-sm text-[var(--samsung-text-muted)]"
+                                th:text="${#numbers.formatInteger(post.views, 0, 'COMMA')}">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-12 flex justify-between items-center">
+                <div class="flex gap-2">
+                    <button
+                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">PREV</button>
+                    <button
+                        class="px-5 py-2 bg-[var(--samsung-black)] text-white text-xs font-bold sharp-edge">1</button>
+                    <button
+                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">NEXT</button>
+                </div>
+                <button
+                    class="bg-[var(--samsung-red)] text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#a50d26] transition-all shadow-lg hover:shadow-red-900/10">
+                    Write Post
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-12 px-6">
+        <div class="max-w-[1440px] mx-auto text-center">
+            <div class="text-[12px] text-[var(--samsung-text-muted)] tracking-tight">
+                Copyright © 2024 Vibe Coding Inc. All rights reserved. Registered trademark of Samsung-inspired Vibe.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
