@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | New Post</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --samsung-red: #c8102e;
+            --samsung-black: #000000;
+            --samsung-grey: #f4f4f4;
+            --samsung-text-dark: #000000;
+            --samsung-text-muted: #555555;
+            --samsung-input-border: #dddddd;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .nav-link {
+            @apply text-[14px] font-medium text-[var(--samsung-text-dark)] hover:opacity-70 transition-opacity;
+        }
+        .sharp-edge {
+            border-radius: 0px !important;
+        }
+        .input-field {
+            @apply w-full border-[var(--samsung-input-border)] focus:border-[var(--samsung-black)] focus:ring-0 transition-colors p-4 text-lg sharp-edge;
+        }
+        .label-text {
+            @apply block text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)] mb-3;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[var(--samsung-text-dark)]">
+    <header class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <a class="text-[22px] font-bold tracking-tight text-[var(--samsung-text-dark)]" th:href="@{/}">
+                    바이브코딩 <span class="text-[var(--samsung-red)]">Vibe Coding</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                    <a class="nav-link font-bold text-[var(--samsung-red)]" th:href="@{/posts}">Community</a>
+                    <a class="nav-link" href="#">Curriculum</a>
+                    <a class="nav-link" href="#">Support</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="material-symbols-outlined text-[20px] font-light">search</button>
+                <button class="material-symbols-outlined text-[20px] font-light">shopping_cart</button>
+                <button class="material-symbols-outlined text-[20px] font-light">person</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-20 px-6">
+        <div class="max-w-[800px] mx-auto">
+            <div class="mb-12">
+                <div
+                    class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-[var(--samsung-red)] mb-4">
+                    <span>Community</span>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-[var(--samsung-black)]">New Post</span>
+                </div>
+                <h1 class="text-4xl font-bold tracking-tight text-[var(--samsung-black)]">Create New Post</h1>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('새 게시글 등록'); return false;" class="space-y-10">
+                <div>
+                    <label for="title" class="label-text">Title</label>
+                    <input type="text" id="title" name="title" required placeholder="Enter post title"
+                        class="input-field">
+                </div>
+
+                <div>
+                    <label for="content" class="label-text">Content</label>
+                    <textarea id="content" name="content" required rows="12" placeholder="Share your vibe..."
+                        class="input-field"></textarea>
+                </div>
+
+                <div class="flex justify-between items-center border-t border-gray-100 pt-10">
+                    <a th:href="@{/posts}"
+                        class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--samsung-black)] hover:text-[var(--samsung-red)] transition-colors group">
+                        <span
+                            class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                        Back to List
+                    </a>
+
+                    <div class="flex gap-4">
+                        <a th:href="@{/posts}"
+                            class="px-10 py-4 border border-gray-200 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-gray-50 transition-colors flex items-center">Cancel</a>
+                        <button type="submit"
+                            class="bg-[var(--samsung-black)] text-white px-10 py-4 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#333333] transition-colors">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-12 px-6">
+        <div class="max-w-[1440px] mx-auto text-center">
+            <div class="text-[12px] text-[var(--samsung-text-muted)] tracking-tight">
+                Copyright © 2024 Vibe Coding Inc. All rights reserved. Registered trademark of Samsung-inspired Vibe.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

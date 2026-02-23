@@ -97,10 +97,10 @@
                     <button
                         class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">NEXT</button>
                 </div>
-                <button
-                    class="bg-[var(--samsung-red)] text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#a50d26] transition-all shadow-lg hover:shadow-red-900/10">
+                <a th:href="@{/posts/new}"
+                    class="bg-[var(--samsung-red)] text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#a50d26] transition-all shadow-lg hover:shadow-red-900/10 flex items-center">
                     Write Post
-                </button>
+                </a>
             </div>
         </div>
     </main>

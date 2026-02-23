@@ -19,6 +19,11 @@ public class PostController {
         return "posts";
     }
 
+    @GetMapping("/posts/new")
+    public String newForm() {
+        return "post_new_form";
+    }
+
     @GetMapping("/posts/{no}")
     public String detail(@org.springframework.web.bind.annotation.PathVariable Long no, Model model) {
         model.addAttribute("post", postService.getPostByNo(no));
