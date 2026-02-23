@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | Discover Your Creative Potential</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --samsung-red: #c8102e;
+            --samsung-black: #000000;
+            --samsung-grey: #f4f4f4;
+            --samsung-text-dark: #000000;
+            --samsung-text-muted: #555555;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .nav-link {
+            @apply text-[14px] font-medium text-[var(--samsung-text-dark)] hover:opacity-70 transition-opacity;
+        }
+        .samsung-btn {
+            @apply px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300;
+        }
+        .samsung-btn-primary {
+            @apply bg-[var(--samsung-black)] text-white hover:bg-[#333333];
+        }
+        .samsung-btn-outline {
+            @apply border border-[var(--samsung-black)] text-[var(--samsung-black)] hover:bg-[var(--samsung-black)] hover:text-white;
+        }
+        .samsung-btn-red {
+            @apply bg-[var(--samsung-red)] text-white hover:bg-[#a50d26];
+        }
+        .grid-card {
+            @apply relative overflow-hidden bg-white border border-transparent transition-all duration-500;
+        }
+        .sharp-edge {
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[var(--samsung-text-dark)]">
+    <header class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <a class="text-[22px] font-bold tracking-tight text-[var(--samsung-text-dark)]" href="#">
+                    바이브코딩 <span class="text-[var(--samsung-red)]">Vibe Coding</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#">Curriculum</a>
+                    <a class="nav-link" href="#">Community</a>
+                    <a class="nav-link" href="#">Support</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="material-symbols-outlined text-[20px] font-light">search</button>
+                <button class="material-symbols-outlined text-[20px] font-light">shopping_cart</button>
+                <button class="material-symbols-outlined text-[20px] font-light">person</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="relative h-[85vh] w-full bg-[var(--samsung-grey)] overflow-hidden">
+            <div class="absolute inset-0">
+                <img alt="Hero background" class="w-full h-full object-cover object-center scale-105"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Ao0O8wp7L-d6aWtt_Jl_t9YtVhfaf-BV54CeRnWmenmFmimLt8GF7QA-rw6GofJWp4YrENrlV2yyC3g1xb6p05EgWViCsPqdnatVJln8ZKtk0_OMnHNSoSjfD84V9kBhNDVy_RC3po2xBQcAODkQEW8-JHZL-AOo58Y7-OeihFq5w04qjoL9gtUwctS-j_eogQa2i0wakjNNmlEg6rzAdGpZYvqfAE5LKcb5ZwtDFCOJLk1Oan9rJs9q6VWn30TQlLW-zKux134" />
+                <div class="absolute inset-0 bg-black/30"></div>
+            </div>
+            <div
+                class="relative h-full max-w-[1440px] mx-auto px-6 flex flex-col items-center justify-center text-center text-white">
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-6">Vibe Coding</h1>
+                <p class="text-xl md:text-2xl font-light mb-10 max-w-2xl opacity-90">
+                    Master the art of software craft with premium curriculum and a global network of innovators.
+                </p>
+                <div class="flex gap-4">
+                    <button class="samsung-btn samsung-btn-red !px-12 !py-4 text-base">Learn More</button>
+                    <button class="samsung-btn !bg-white !text-black hover:!bg-gray-100 !px-12 !py-4 text-base">Buy
+                        Now</button>
+                </div>
+            </div>
+        </section>
+        <section class="bg-white py-20 px-6">
+            <div class="max-w-[1440px] mx-auto">
+                <div class="flex justify-between items-end mb-12">
+                    <h2 class="text-4xl font-bold tracking-tight">Featured Offers</h2>
+                    <a class="text-[var(--samsung-red)] font-semibold border-b-2 border-[var(--samsung-red)] pb-1 hover:opacity-80 transition-opacity"
+                        href="#">View All</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid-card sharp-edge h-[600px] bg-[var(--samsung-grey)] group">
+                        <div class="absolute inset-0">
+                            <img alt="Creative Learning"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZwfN0WLoK0vcZuuIlf4eHHsw5InYObw4FZZMlujdG2JGzdzKmUkuAxwfpU3bY0G_z9BFKXMjgHIyDOBc8a4jFGuJglcwTh9LZz04mKjEn7bGusiF96Er1WLWQivvt3sOp6B8FZK5CezjIbopRAhKTtsoRRCGyVKsAoBmotEA_tKpr0NC-zDVqwhzRgdO-Sz9qMFxCDJuPUBro71i7ceAtMN-hGumUYFdASB4vMd_480C3bxxHBqt6BSkuwZgyG24Im7QyOQZqi0M" />
+                        </div>
+                        <div class="absolute top-12 left-12 max-w-sm">
+                            <span class="text-xs font-bold uppercase tracking-[0.2em] mb-4 block">New Experience</span>
+                            <h3 class="text-4xl font-bold mb-4 leading-tight">Creative<br />Learning</h3>
+                            <p class="text-[var(--samsung-text-muted)] mb-8">Unconventional project-based learning for
+                                the next generation of developers.</p>
+                            <button class="samsung-btn samsung-btn-primary sharp-edge">Explore</button>
+                        </div>
+                    </div>
+                    <div class="grid-card sharp-edge h-[600px] bg-[var(--samsung-grey)] group">
+                        <div class="absolute inset-0">
+                            <img alt="Global Community"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe8sUJnmdOlDHr0HT4UUTFBIFdN1aKsrvdj3r_HWd_hwi2YP6pLMhRCyE1V7n9IspLjJvHiFm3Ay0QsSsAdsjevbcVc5Yv5ReVFX_kOTAvUxQ5dQ8Jmk2TpN-wBTcPUuj8u1fvVeIeIbTv2Jqb162AG6b90ZIRGSu7T3fzPCDHjMzOpiprNbXO9OIuDTpNDrA6j16lwRPt94ShNKcbp-HA3o1j-tyMp9ae2cPRbHsAOp_5CUup39Sjb3Taw03Uq0DSwNKFugEou4o" />
+                        </div>
+                        <div class="absolute top-12 left-12 max-w-sm">
+                            <span class="text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Collaboration</span>
+                            <h3 class="text-4xl font-bold mb-4 leading-tight">Global<br />Community</h3>
+                            <p class="text-[var(--samsung-text-muted)] mb-8">Connect with 5,000+ developers from 45
+                                countries in our exclusive network.</p>
+                            <button class="samsung-btn samsung-btn-primary sharp-edge">Join Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-[var(--samsung-grey)] py-24 px-6">
+            <div class="max-w-[1440px] mx-auto text-center mb-16">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Our Curriculum</h2>
+                <nav class="flex justify-center gap-10 mt-8">
+                    <button class="pb-2 border-b-2 border-black font-bold">Frontend</button>
+                    <button
+                        class="pb-2 border-b-2 border-transparent text-[var(--samsung-text-muted)] hover:text-black transition-colors">Backend</button>
+                    <button
+                        class="pb-2 border-b-2 border-transparent text-[var(--samsung-text-muted)] hover:text-black transition-colors">AI
+                        &amp; Data</button>
+                    <button
+                        class="pb-2 border-b-2 border-transparent text-[var(--samsung-text-muted)] hover:text-black transition-colors">Web3</button>
+                </nav>
+            </div>
+            <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-1">
+                <div
+                    class="bg-white p-12 text-center group border border-transparent hover:border-gray-200 transition-all">
+                    <div class="h-64 mb-10 overflow-hidden flex items-center justify-center">
+                        <span
+                            class="material-symbols-outlined text-8xl font-thin text-[var(--samsung-red)] transition-transform duration-500 group-hover:scale-110">terminal</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">The Foundation Path</h4>
+                    <p class="text-sm text-[var(--samsung-text-muted)] mb-8 px-4">Master the core concepts of
+                        high-performance coding and creative architecture.</p>
+                    <button class="samsung-btn samsung-btn-outline sharp-edge text-xs">Learn More</button>
+                </div>
+                <div
+                    class="bg-white p-12 text-center group border border-transparent hover:border-gray-200 transition-all">
+                    <div class="h-64 mb-10 overflow-hidden flex items-center justify-center">
+                        <span
+                            class="material-symbols-outlined text-8xl font-thin text-[var(--samsung-red)] transition-transform duration-500 group-hover:scale-110">auto_awesome</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">AI Innovation Suite</h4>
+                    <p class="text-sm text-[var(--samsung-text-muted)] mb-8 px-4">Deploy cutting-edge AI models into
+                        real-world production environments.</p>
+                    <button class="samsung-btn samsung-btn-outline sharp-edge text-xs">Learn More</button>
+                </div>
+                <div
+                    class="bg-white p-12 text-center group border border-transparent hover:border-gray-200 transition-all">
+                    <div class="h-64 mb-10 overflow-hidden flex items-center justify-center">
+                        <span
+                            class="material-symbols-outlined text-8xl font-thin text-[var(--samsung-red)] transition-transform duration-500 group-hover:scale-110">rocket_launch</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Startup Accelerator</h4>
+                    <p class="text-sm text-[var(--samsung-text-muted)] mb-8 px-4">Turn your vibe into a product. Ship
+                        SaaS platforms from scratch.</p>
+                    <button class="samsung-btn samsung-btn-outline sharp-edge text-xs">Learn More</button>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-white text-center px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-5xl font-bold tracking-tight mb-8">Ready to change your frequency?</h2>
+                <p class="text-xl text-[var(--samsung-text-muted)] mb-12">Join thousands of developers in the Vibe
+                    Coding movement today and build the future you want to see.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="samsung-btn samsung-btn-red !px-16 !py-4 text-lg sharp-edge">Get Started Now</button>
+                    <button class="samsung-btn samsung-btn-primary !px-16 !py-4 text-lg sharp-edge">Talk to
+                        Alumni</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-12 px-6">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
+                <div class="lg:col-span-2">
+                    <div class="text-[22px] font-bold tracking-tight mb-6">바이브코딩</div>
+                    <p class="text-[14px] text-[var(--samsung-text-muted)] leading-relaxed max-w-sm">
+                        Experience technical excellence through the lens of creative expression. The world's first
+                        vibe-centric coding institution.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-sm font-bold mb-6">Learning</h5>
+                    <ul class="space-y-4 text-sm text-[var(--samsung-text-muted)]">
+                        <li><a class="hover:text-black" href="#">All Courses</a></li>
+                        <li><a class="hover:text-black" href="#">Mentorship</a></li>
+                        <li><a class="hover:text-black" href="#">Career Path</a></li>
+                        <li><a class="hover:text-black" href="#">Certifications</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-bold mb-6">Community</h5>
+                    <ul class="space-y-4 text-sm text-[var(--samsung-text-muted)]">
+                        <li><a class="hover:text-black" href="#">Discord</a></li>
+                        <li><a class="hover:text-black" href="#">Hackathons</a></li>
+                        <li><a class="hover:text-black" href="#">Events</a></li>
+                        <li><a class="hover:text-black" href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-bold mb-6">Support</h5>
+                    <ul class="space-y-4 text-sm text-[var(--samsung-text-muted)]">
+                        <li><a class="hover:text-black" href="#">Help Center</a></li>
+                        <li><a class="hover:text-black" href="#">Contact Us</a></li>
+                        <li><a class="hover:text-black" href="#">Privacy</a></li>
+                        <li><a class="hover:text-black" href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-[12px] text-[var(--samsung-text-muted)]">
+                    Copyright © 2024 Vibe Coding Inc. All rights reserved.
+                </div>
+                <div class="flex items-center gap-6">
+                    <a class="text-[var(--samsung-text-muted)] hover:text-black transition-colors" href="#"><span
+                            class="material-symbols-outlined text-[20px]">language</span></a>
+                    <a class="text-[var(--samsung-text-muted)] hover:text-black transition-colors" href="#">Global /
+                        English</a>
+                    <div class="flex gap-4 ml-6">
+                        <span
+                            class="material-symbols-outlined text-[20px] font-light text-[var(--samsung-text-muted)]">share</span>
+                        <span
+                            class="material-symbols-outlined text-[20px] font-light text-[var(--samsung-text-muted)]">public</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
