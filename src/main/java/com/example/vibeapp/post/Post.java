@@ -1,4 +1,4 @@
-package com.example.vibeapp.domain;
+package com.example.vibeapp.post;
 
 import java.time.LocalDateTime;
 
@@ -8,11 +8,11 @@ public class Post {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private Integer views;
+    private int views;
 
     public Post() {}
 
-    public Post(Long no, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt, Integer views) {
+    public Post(Long no, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt, int views) {
         this.no = no;
         this.title = title;
         this.content = content;
@@ -21,22 +21,16 @@ public class Post {
         this.views = views;
     }
 
-    // Getters and Setters
     public Long getNo() { return no; }
     public void setNo(Long no) { this.no = no; }
-
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
-
     public String getContent() { return content; }
     public void setContent(String content) { this.content = content; }
-
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
-
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
-
-    public Integer getViews() { return views; }
-    public void setViews(Integer views) { this.views = views; }
+    public int getViews() { return views; }
+    public void setViews(int views) { this.views = views; }
 }

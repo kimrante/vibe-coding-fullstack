@@ -1,9 +1,13 @@
-package com.example.vibeapp.controller;
+package com.example.vibeapp.post;
 
-import com.example.vibeapp.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class PostController {
@@ -14,7 +18,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String list(@org.springframework.web.bind.annotation.RequestParam(defaultValue = "1") int page, Model model) {
+    public String list(@RequestParam(defaultValue = "1") int page, Model model) {
         int pageSize = 5;
         model.addAttribute("posts", postService.getPostsByPage(page, pageSize));
         model.addAttribute("currentPage", page);
@@ -27,35 +31,35 @@ public class PostController {
         return "post_new_form";
     }
 
-    @org.springframework.web.bind.annotation.PostMapping("/posts/add")
-    public String add(@org.springframework.web.bind.annotation.RequestParam String title,
-                      @org.springframework.web.bind.annotation.RequestParam String content) {
+    @PostMapping("/posts/add")
+    public String add(@RequestParam String title,
+                      @RequestParam String content) {
         postService.addPost(title, content);
         return "redirect:/posts";
     }
 
     @GetMapping("/posts/{no}")
-    public String detail(@org.springframework.web.bind.annotation.PathVariable Long no, Model model) {
+    public String detail(@PathVariable Long no, Model model) {
         model.addAttribute("post", postService.getPostByNo(no));
         return "post_detail";
     }
 
     @GetMapping("/posts/{no}/edit")
-    public String editForm(@org.springframework.web.bind.annotation.PathVariable Long no, Model model) {
+    public String editForm(@PathVariable Long no, Model model) {
         model.addAttribute("post", postService.getPostByNo(no));
         return "post_edit_form";
     }
 
-    @org.springframework.web.bind.annotation.PostMapping("/posts/{no}/save")
-    public String save(@org.springframework.web.bind.annotation.PathVariable Long no,
-                       @org.springframework.web.bind.annotation.RequestParam String title,
-                       @org.springframework.web.bind.annotation.RequestParam String content) {
+    @PostMapping("/posts/{no}/save")
+    public String save(@PathVariable Long no,
+                       @RequestParam String title,
+                       @RequestParam String content) {
         postService.updatePost(no, title, content);
         return "redirect:/posts/" + no;
     }
 
-    @org.springframework.web.bind.annotation.PostMapping("/posts/{no}/delete")
-    public String delete(@org.springframework.web.bind.annotation.PathVariable Long no) {
+    @PostMapping("/posts/{no}/delete")
+    public String delete(@PathVariable Long no) {
         postService.deletePost(no);
         return "redirect:/posts";
     }
