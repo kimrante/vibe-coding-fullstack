@@ -35,3 +35,6 @@ out/
 
 ### Brain (AI Artifacts) ###
 .gemini/
+
+### Antigravity Rules ###
+.antigravity/
