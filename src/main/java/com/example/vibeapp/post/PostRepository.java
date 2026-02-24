@@ -30,7 +30,7 @@ public class PostRepository {
                 .toList();
     }
 
-    public Optional<Post> findByNo(Long no) {
+    public Optional<Post> findById(Long no) {
         return posts.stream()
                 .filter(post -> post.getNo().equals(no))
                 .findFirst();
@@ -40,7 +40,7 @@ public class PostRepository {
         posts.add(post);
     }
 
-    public void deleteByNo(Long no) {
+    public void deleteById(Long no) {
         posts.removeIf(post -> post.getNo().equals(no));
     }
 }

@@ -20,46 +20,46 @@ public class PostController {
     @GetMapping("/posts")
     public String list(@RequestParam(defaultValue = "1") int page, Model model) {
         int pageSize = 5;
-        model.addAttribute("posts", postService.getPostsByPage(page, pageSize));
+        model.addAttribute("posts", postService.getPosts(page, pageSize));
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", postService.getTotalPages(pageSize));
         return "post/posts";
     }
 
     @GetMapping("/posts/new")
-    public String newForm() {
+    public String createForm() {
         return "post/post_new_form";
     }
 
     @PostMapping("/posts/add")
-    public String add(@RequestParam String title,
-                      @RequestParam String content) {
-        postService.addPost(title, content);
+    public String create(@RequestParam String title,
+                         @RequestParam String content) {
+        postService.createPost(title, content);
         return "redirect:/posts";
     }
 
     @GetMapping("/posts/{no}")
-    public String detail(@PathVariable Long no, Model model) {
-        model.addAttribute("post", postService.getPostByNo(no));
+    public String view(@PathVariable Long no, Model model) {
+        model.addAttribute("post", postService.getPost(no));
         return "post/post_detail";
     }
 
     @GetMapping("/posts/{no}/edit")
-    public String editForm(@PathVariable Long no, Model model) {
-        model.addAttribute("post", postService.getPostByNo(no));
+    public String updateForm(@PathVariable Long no, Model model) {
+        model.addAttribute("post", postService.getPost(no));
         return "post/post_edit_form";
     }
 
     @PostMapping("/posts/{no}/save")
-    public String save(@PathVariable Long no,
-                       @RequestParam String title,
-                       @RequestParam String content) {
+    public String update(@PathVariable Long no,
+                         @RequestParam String title,
+                         @RequestParam String content) {
         postService.updatePost(no, title, content);
         return "redirect:/posts/" + no;
     }
 
     @PostMapping("/posts/{no}/delete")
-    public String delete(@PathVariable Long no) {
+    public String remove(@PathVariable Long no) {
         postService.deletePost(no);
         return "redirect:/posts";
     }
