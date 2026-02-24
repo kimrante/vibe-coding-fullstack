@@ -66,48 +66,32 @@
                 <p class="text-[var(--samsung-text-muted)] text-sm">게시글의 제목과 내용을 수정할 수 있습니다.</p>
             </div>
 
-            <form th:action="@{/posts/{no}/save(no=${post.no})}" method="POST" class="space-y-10">
+            <form th:action="@{/posts/{no}/save(no=${no})}" th:object="${postUpdateDto}" method="POST"
+                class="space-y-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div class="space-y-1.5">
                         <label
                             class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">번호</label>
                         <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
-                            th:text="${post.no}">1</div>
-                    </div>
-                    <div class="space-y-1.5">
-                        <label
-                            class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">조회수</label>
-                        <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
-                            th:text="${post.views}">0</div>
-                    </div>
-                    <div class="space-y-1.5">
-                        <label
-                            class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">생성일</label>
-                        <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
-                            th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}">2024-01-01</div>
-                    </div>
-                    <div class="space-y-1.5">
-                        <label
-                            class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">수정일</label>
-                        <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
-                            th:text="${post.updatedAt != null ? #temporals.format(post.updatedAt, 'yyyy-MM-dd') : ''}">
-                            &nbsp;</div>
+                            th:text="${no}">1</div>
                     </div>
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="title"
+                    <label th:for="title"
                         class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">제목</label>
-                    <input type="text" id="title" name="title" th:value="${post.title}" required
-                        class="w-full bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border-none focus:ring-1 focus:ring-[var(--samsung-black)] transition-shadow" />
+                    <input type="text" th:field="*{title}"
+                        class="w-full bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border-none focus:ring-1 focus:ring-[var(--samsung-black)] transition-shadow"
+                        th:classappend="${#fields.hasErrors('title')} ? 'border-red-500' : ''" />
+                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                        class="text-[var(--samsung-red)] text-xs mt-2 font-medium uppercase tracking-tight italic"></p>
                 </div>
 
                 <div class="space-y-1.5">
-                    <label for="content"
+                    <label th:for="content"
                         class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">내용</label>
-                    <textarea id="content" name="content" rows="12" required
-                        class="w-full bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border-none focus:ring-1 focus:ring-[var(--samsung-black)] transition-shadow min-h-[300px]"
-                        th:text="${post.content}"></textarea>
+                    <textarea th:field="*{content}" rows="12"
+                        class="w-full bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border-none focus:ring-1 focus:ring-[var(--samsung-black)] transition-shadow min-h-[300px]"></textarea>
                 </div>
 
                 <div class="flex gap-4 pt-10">
@@ -115,7 +99,7 @@
                         class="flex-1 bg-[var(--samsung-black)] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#333333] transition-colors">
                         저장
                     </button>
-                    <a th:href="@{/posts/{no}(no=${post.no})}"
+                    <a th:href="@{/posts/{no}(no=${no})}"
                         class="flex-1 bg-white border border-gray-200 text-[var(--samsung-black)] px-8 py-4 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-gray-50 transition-colors text-center">
                         취소
                     </a>

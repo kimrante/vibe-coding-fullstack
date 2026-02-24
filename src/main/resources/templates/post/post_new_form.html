@@ -72,16 +72,18 @@
                 <h1 class="text-4xl font-bold tracking-tight text-[var(--samsung-black)]">Create New Post</h1>
             </div>
 
-            <form th:action="@{/posts/add}" method="post" class="space-y-10">
+            <form th:action="@{/posts/add}" th:object="${postCreateDto}" method="post" class="space-y-10">
                 <div>
-                    <label for="title" class="label-text">Title</label>
-                    <input type="text" id="title" name="title" required placeholder="Enter post title"
-                        class="input-field">
+                    <label th:for="title" class="label-text">Title</label>
+                    <input type="text" th:field="*{title}" placeholder="Enter post title" class="input-field"
+                        th:classappend="${#fields.hasErrors('title')} ? 'border-red-500' : ''">
+                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                        class="text-[var(--samsung-red)] text-xs mt-2 font-medium uppercase tracking-tight italic"></p>
                 </div>
 
                 <div>
-                    <label for="content" class="label-text">Content</label>
-                    <textarea id="content" name="content" required rows="12" placeholder="Share your vibe..."
+                    <label th:for="content" class="label-text">Content</label>
+                    <textarea th:field="*{content}" rows="12" placeholder="Share your vibe..."
                         class="input-field"></textarea>
                 </div>
 
