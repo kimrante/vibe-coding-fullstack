@@ -45,8 +45,8 @@ public class PostService {
     public void updatePost(Long no, PostUpdateDto updateDto) {
         Post post = postRepository.findById(no)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid post number: " + no));
-        post.setTitle(updateDto.getTitle());
-        post.setContent(updateDto.getContent());
+        post.setTitle(updateDto.title());
+        post.setContent(updateDto.content());
         post.setUpdatedAt(LocalDateTime.now());
     }
 
