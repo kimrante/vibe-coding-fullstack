@@ -21,16 +21,18 @@ VibeApp은 게시판 기능을 포함한 Spring Boot 기반 웹 애플리케이�
   - `spring-boot-starter-test`: 테스트 환경 구축
 
 ## 4. 아키텍처 및 패키지 구조
-프로젝트는 계층형이 아닌 **기능 중심(Feature-centric)** 패키지 구조를 채택하고 있습니다.
+- 프로젝트는 기능 중심 패키지 구조와 **DTO 패턴**을 채택하고 있습니다.
 
 - **패키지 구성**: `com.example.vibeapp`
   - `.home`: 홈 화면 관련 컨트롤러
   - `.post`: 게시판 관련 컨트롤러, 서비스, 리포지토리, 도메인 모델
 - **역할 분담**:
-  - `Controller`: 사용자 요청 매핑 및 뷰 반환
-  - `Service`: 비즈니스 로직 수행
+  - `Controller`: DTO를 통한 데이터 수신 및 `@Valid`를 이용한 입력값 검증 수행
+  - `Service`: 비즈니스 로직 수행 및 DTO <-> Entity 변환 처리
   - `Repository`: 데이터 접근 및 관리 (인메모리 방식)
-  - `Post`: 게시글 엔티티(Entity) 데이터 정의
+  - `DTO`: `PostCreateDto`, `PostUpdateDto`, `PostResponseDto`, `PostListDto`를 통해 계층 간 데이터 전송
+- **데이터 유효성 검사**:
+  - `jakarta.validation`을 사용하여 제목(필수, 최대 100자) 등에 대한 제약 조건 적용
 
 ## 5. 구현된 주요 기능
 - **홈 화면**: 애플리케이션 진입점 제공
