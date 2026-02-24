@@ -66,7 +66,7 @@
                 <p class="text-[var(--samsung-text-muted)] text-sm">게시글의 제목과 내용을 수정할 수 있습니다.</p>
             </div>
 
-            <form th:action="@{/posts/{no}/edit(no=${post.no})}" method="POST" class="space-y-10">
+            <form th:action="@{/posts/{no}/save(no=${post.no})}" method="POST" class="space-y-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div class="space-y-1.5">
                         <label
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="flex gap-4 pt-10">
-                    <button type="button" onclick="alert('게시글이 저장되었습니다.');"
+                    <button type="submit"
                         class="flex-1 bg-[var(--samsung-black)] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#333333] transition-colors">
                         저장
                     </button>

@@ -42,4 +42,12 @@ public class PostController {
         model.addAttribute("post", postService.getPostByNo(no));
         return "post_edit_form";
     }
+
+    @org.springframework.web.bind.annotation.PostMapping("/posts/{no}/save")
+    public String save(@org.springframework.web.bind.annotation.PathVariable Long no,
+                       @org.springframework.web.bind.annotation.RequestParam String title,
+                       @org.springframework.web.bind.annotation.RequestParam String content) {
+        postService.updatePost(no, title, content);
+        return "redirect:/posts/" + no;
+    }
 }
