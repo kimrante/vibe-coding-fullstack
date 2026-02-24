@@ -90,12 +90,29 @@
 
             <div class="mt-12 flex justify-between items-center">
                 <div class="flex gap-2">
-                    <button
-                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">PREV</button>
-                    <button
-                        class="px-5 py-2 bg-[var(--samsung-black)] text-white text-xs font-bold sharp-edge">1</button>
-                    <button
-                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">NEXT</button>
+                    <!-- PREV Button -->
+                    <a th:if="${currentPage > 1}" th:href="@{/posts(page=${currentPage - 1})}"
+                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">PREV</a>
+                    <button th:unless="${currentPage > 1}"
+                        class="px-5 py-2 border border-gray-200 text-xs font-semibold opacity-30 sharp-edge cursor-not-allowed"
+                        disabled>PREV</button>
+
+                    <!-- Page Numbers -->
+                    <div th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:remove="tag">
+                        <a th:if="${pageNum != currentPage}" th:href="@{/posts(page=${pageNum})}"
+                            class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors"
+                            th:text="${pageNum}">1</a>
+                        <button th:if="${pageNum == currentPage}"
+                            class="px-5 py-2 bg-[var(--samsung-black)] text-white text-xs font-bold sharp-edge"
+                            th:text="${pageNum}">1</button>
+                    </div>
+
+                    <!-- NEXT Button -->
+                    <a th:if="${currentPage < totalPages}" th:href="@{/posts(page=${currentPage + 1})}"
+                        class="px-5 py-2 border border-gray-200 text-xs font-semibold hover:bg-gray-50 sharp-edge transition-colors">NEXT</a>
+                    <button th:unless="${currentPage < totalPages}"
+                        class="px-5 py-2 border border-gray-200 text-xs font-semibold opacity-30 sharp-edge cursor-not-allowed"
+                        disabled>NEXT</button>
                 </div>
                 <a th:href="@{/posts/new}"
                     class="bg-[var(--samsung-red)] text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#a50d26] transition-all shadow-lg hover:shadow-red-900/10 flex items-center">

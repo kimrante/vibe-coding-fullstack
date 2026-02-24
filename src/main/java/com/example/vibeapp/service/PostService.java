@@ -57,4 +57,21 @@ public class PostService {
     public void deletePost(Long no) {
         postRepository.deleteByNo(no);
     }
+
+    public List<Post> getPostsByPage(int page, int size) {
+        List<Post> allPosts = postRepository.findAll();
+        int start = (page - 1) * size;
+        int end = Math.min(start + size, allPosts.size());
+        
+        if (start > allPosts.size()) {
+            return List.of();
+        }
+        
+        return allPosts.subList(start, end);
+    }
+
+    public int getTotalPages(int size) {
+        int totalPosts = postRepository.findAll().size();
+        return (int) Math.ceil((double) totalPosts / size);
+    }
 }
