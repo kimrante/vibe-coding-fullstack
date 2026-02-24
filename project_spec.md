@@ -9,14 +9,19 @@ VibeApp은 게시판 기능을 포함한 Spring Boot 기반 웹 애플리케이�
 
 ## 2. 개발 환경 설정
 - **JDK 버전**: JDK 25
-- **언어**: Java 25
-- **프레임워크**: Spring Boot 4.0.1
+- **Language**: Java 25
+- **Spring Boot Version**: 4.0.1
+- **Build Tool**: Gradle (Groovy DSL)
+- **Database**: H2 Database (File Mode: `./data/testdb`)
+- **Persistence Framework**: MyBatis
+- **View Engine**: Thymeleaf
 
 ## 3. 빌드 및 종속성 관리
-- **빌드 도구**: Gradle 9.3.0
-- **DSL**: Groovy DSL (`build.gradle`)
 - **주요 의존성 (Dependencies)**:
   - `spring-boot-starter-web`: 웹 서비스 구축
+  - `spring-boot-starter-validation`: Bean Validation 지원
+  - `mybatis-spring-boot-starter`: MyBatis 연동 지원
+  - `h2`: H2 Database 지원
   - `spring-boot-starter-thymeleaf`: 뷰 템플릿 엔진
   - `spring-boot-starter-test`: 테스트 환경 구축
 

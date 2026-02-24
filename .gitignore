@@ -38,3 +38,11 @@ out/
 
 ### Antigravity Rules ###
 .antigravity/
+
+### H2 Database ###
+/data/
+*.mv.db
+*.trace.db
+
+### Logs ###
+/logs/
