@@ -36,4 +36,10 @@ public class PostController {
         model.addAttribute("post", postService.getPostByNo(no));
         return "post_detail";
     }
+
+    @GetMapping("/posts/{no}/edit")
+    public String editForm(@org.springframework.web.bind.annotation.PathVariable Long no, Model model) {
+        model.addAttribute("post", postService.getPostByNo(no));
+        return "post_edit_form";
+    }
 }

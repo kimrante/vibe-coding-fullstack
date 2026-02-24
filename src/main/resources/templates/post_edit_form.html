@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | Post Edit</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --samsung-red: #c8102e;
+            --samsung-black: #000000;
+            --samsung-grey: #f4f4f4;
+            --samsung-text-dark: #000000;
+            --samsung-text-muted: #555555;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .nav-link {
+            @apply text-[14px] font-medium text-[var(--samsung-text-dark)] hover:opacity-70 transition-opacity;
+        }
+        .sharp-edge {
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[var(--samsung-text-dark)]">
+    <header class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <a class="text-[22px] font-bold tracking-tight text-[var(--samsung-text-dark)]" th:href="@{/}">
+                    바이브코딩 <span class="text-[var(--samsung-red)]">Vibe Coding</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                    <a class="nav-link font-bold text-[var(--samsung-red)]" th:href="@{/posts}">Community</a>
+                    <a class="nav-link" href="#">Curriculum</a>
+                    <a class="nav-link" href="#">Support</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="material-symbols-outlined text-[20px] font-light">search</button>
+                <button class="material-symbols-outlined text-[20px] font-light">shopping_cart</button>
+                <button class="material-symbols-outlined text-[20px] font-light">person</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-20 px-6">
+        <div class="max-w-[800px] mx-auto">
+            <div class="mb-12 border-b border-gray-200 pb-8">
+                <div
+                    class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-[var(--samsung-red)] mb-4">
+                    <span>Community</span>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-[var(--samsung-black)]">Edit Post</span>
+                </div>
+                <h1 class="text-4xl font-bold tracking-tight mb-2 text-[var(--samsung-black)]">게시글 수정</h1>
+                <p class="text-[var(--samsung-text-muted)] text-sm">게시글의 제목과 내용을 수정할 수 있습니다.</p>
+            </div>
+
+            <form th:action="@{/posts/{no}/edit(no=${post.no})}" method="POST" class="space-y-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="space-y-1.5">
+                        <label
+                            class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">번호</label>
+                        <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
+                            th:text="${post.no}">1</div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label
+                            class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">조회수</label>
+                        <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
+                            th:text="${post.views}">0</div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label
+                            class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">생성일</label>
+                        <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
+                            th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}">2024-01-01</div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label
+                            class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">수정일</label>
+                        <div class="bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border border-transparent font-medium"
+                            th:text="${post.updatedAt != null ? #temporals.format(post.updatedAt, 'yyyy-MM-dd') : ''}">
+                            &nbsp;</div>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label for="title"
+                        class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">제목</label>
+                    <input type="text" id="title" name="title" th:value="${post.title}" required
+                        class="w-full bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border-none focus:ring-1 focus:ring-[var(--samsung-black)] transition-shadow" />
+                </div>
+
+                <div class="space-y-1.5">
+                    <label for="content"
+                        class="text-[10px] font-bold uppercase tracking-widest text-[var(--samsung-text-muted)]">내용</label>
+                    <textarea id="content" name="content" rows="12" required
+                        class="w-full bg-[var(--samsung-grey)] px-4 py-3.5 text-sm sharp-edge border-none focus:ring-1 focus:ring-[var(--samsung-black)] transition-shadow min-h-[300px]"
+                        th:text="${post.content}"></textarea>
+                </div>
+
+                <div class="flex gap-4 pt-10">
+                    <button type="button" onclick="alert('게시글이 저장되었습니다.');"
+                        class="flex-1 bg-[var(--samsung-black)] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#333333] transition-colors">
+                        저장
+                    </button>
+                    <a th:href="@{/posts/{no}(no=${post.no})}"
+                        class="flex-1 bg-white border border-gray-200 text-[var(--samsung-black)] px-8 py-4 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-gray-50 transition-colors text-center">
+                        취소
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-12 px-6">
+        <div class="max-w-[1440px] mx-auto text-center">
+            <div class="text-[12px] text-[var(--samsung-text-muted)] tracking-tight">
+                Copyright © 2024 Vibe Coding Inc. All rights reserved. Registered trademark of Samsung-inspired Vibe.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

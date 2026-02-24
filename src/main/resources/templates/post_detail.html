@@ -99,8 +99,8 @@
                 </a>
 
                 <div class="flex gap-4">
-                    <button
-                        class="px-8 py-3.5 border border-gray-200 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-gray-50 transition-colors">Edit</button>
+                    <a th:href="@{/posts/{no}/edit(no=${post.no})}"
+                        class="px-8 py-3.5 border border-gray-200 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-gray-50 transition-colors text-center inline-block">Edit</a>
                     <button
                         class="bg-[var(--samsung-black)] text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest sharp-edge hover:bg-[#333333] transition-colors">Delete</button>
                 </div>
